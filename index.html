@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                 document.getElementById('activity-4').style.display = 'none';
+                  document.getElementById('activity-8').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M17</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparación del entorno de aprendizaje y bienvenida a los genios.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy exploraremos las librerías de TinkerCAD, un mundo de posibilidades para diseñar mecanismos y estructuras increíbles. Prepárense para descubrir cómo usar estas herramientas para crear proyectos complejos y dinámicos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de sumergirnos en el mundo de TinkerCAD, quiero saber cómo se sienten hoy. Si están listos para construir, toquen su hombro izquierdo. Si necesitan un momento para enfocarse, den un pequeño salto en su lugar."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por la oportunidad de explorar y crear juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Nuestros objetivos para hoy son tres: 1. Conocer cómo usar las librerías en TinkerCAD. 2. Comprender la aplicación de los elementos en las librerías de Hardware y Steamfie. 3. Diseñar una estructura utilizando las conexiones de la librería Hardware."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion_dia')">
+        <div class="title">💡 Actividad 2: Innovación del Día ⏰ Tiempo: 4 minutos</div>
+        <div class="subtitle">Exploración de innovaciones tecnológicas relacionadas con hardware y diseño.</div>
+    </div>
+    <div id="innovacion_dia" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Innovación del Día".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy vamos a explorar una innovación que muestra cómo las piezas de hardware se pueden combinar para crear sistemas complejos. Les presento el concepto de 'Modular Robotics', una forma de construir robots y estructuras mecánicas utilizando bloques y módulos intercambiables. Este enfoque no sólo facilita el diseño, sino también la reparación y adaptación de los sistemas a diferentes necesidades."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutos):</strong> Proyectar Diapositiva 7 "Video de Modular Robotics".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Observen este video para ver cómo la modularidad permite crear una gran variedad de robots y mecanismos con piezas reutilizables y fácilmente intercambiables. Presten atención a cómo se conectan las piezas, la versatilidad que ofrecen y las diferentes funciones que pueden realizar estos robots, ya que esto es similar a lo que veremos en la libreria de Hardware en Tinkercad, donde las conexiones y formas serán fundamentales en lo que crearemos hoy."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Modularidad".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Modular Robotics nos enseña que, al igual que con bloques, podemos construir sistemas complejos a partir de elementos simples y bien diseñados. En TinkerCAD, vamos a usar este mismo principio para crear nuestras propias estructuras, entendiendo cómo las conexiones y los componentes de hardware trabajan juntos para formar un conjunto funcional."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain_gym')">
+        <div class="title">🧠 Actividad 3: Brain Gym ⏰ Tiempo: 19 minutos</div>
+        <div class="subtitle">Profundización en el uso de librerías de TinkerCAD y sus aplicaciones en diseño.</div>
+    </div>
+    <div id="brain_gym" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (1 minuto):</strong> Proyectar Diapositiva 9 "Introducción a las Librerías".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy exploraremos una de las herramientas más poderosas de TinkerCAD: las librerías. Estas colecciones de formas y componentes pre-diseñados nos permiten construir proyectos complejos de manera más eficiente. En lugar de empezar cada objeto desde cero, podemos usar elementos ya existentes y combinarlos para crear algo nuevo. Esto es similar a usar piezas de Lego o componentes electrónicos para construir diferentes prototipos. Aprender a utilizar las librerías es fundamental para diseñar proyectos más complejos y profesionales en menos tiempo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 10 "Explorando las Formas Básicas y Librerías".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para empezar, recordemos las formas básicas que ya conocemos: cubos, cilindros, esferas, conos, etc.  Ahora, veamos las librerías.  En el menú lateral derecho de Tinkercad, encontrarán el menú de "formas",  y si se desplazan hacia abajo, verán muchas otras colecciones disponibles. Notarán que hay diversas categorías que van más allá de las formas básicas. Cada una de estas categorías tiene formas especiales que pueden ser muy útiles para lo que haremos hoy. Las librerías nos dan acceso a una gran variedad de elementos que simplifican el proceso de diseño y construcción. Desde herramientas mecánicas hasta componentes electrónicos, estas librerías nos ofrecen piezas listas para usar en nuestros diseños, similar a usar una caja de herramientas bien surtida."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (1.5 minutos):</strong> Proyectar Diapositiva 11 "La Librería de Hardware".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy nos enfocaremos en la librería 'Hardware'. En esta categoría, encontrarán una variedad de componentes mecánicos que son muy útiles para construir estructuras y mecanismos funcionales. Exploraremos tres tipos de elementos principales en esta librería: 'Engranajes y Ejes', 'Conectores' y 'Uniones'. Estos componentes son fundamentales para crear estructuras que puedan moverse, sostenerse o interactuar entre sí. Aprenderemos cómo estas piezas pueden formar mecanismos complejos que se mueven de manera eficiente y precisa."
+                </td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1.5 minutos):</strong> Proyectar Diapositiva 12 "Engranajes y Ejes".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Los 'Engranajes y Ejes' son componentes esenciales para construir sistemas de transmisión de movimiento. Los engranajes, con sus dientes entrelazados, permiten transferir energía rotacional de un eje a otro, cambiando la velocidad o dirección del movimiento. Los ejes, por su parte, sirven como soporte y guía para los engranajes.  Para un ejemplo de utilidad, los engranajes los podemos encontrar desde un simple reloj hasta los motores de los autos. En TinkerCAD, podemos usar estos componentes para simular cómo diferentes partes de un mecanismo interactúan y se mueven, aprendiendo conceptos básicos de mecánica de una manera práctica. Dentro de "Hardware podrán encontrar un tipo de engrane sencillo de montar para imprimir en 3D, pero pueden buscar la palabra "engrane" en el menú de formas y encontrarán más opciones de engranes para usar."
+                </td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 13 "Conectores".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Los 'Conectores' son componentes que facilitan la unión entre diferentes piezas en un diseño. Estos elementos pueden ser tornillos, tuercas, pernos o encajes que permiten unir dos o más piezas de forma segura y funcional. En el mundo real, los conectores son esenciales para mantener la integridad de cualquier estructura, desde edificios hasta pequeños dispositivos electrónicos.  En Tinkercad, los conectores nos permiten crear estructuras sólidas y estables. Si bien no simulan la funcionalidad de los tornillos, si nos ayudan a visualizar como un modelo se sostiene por la unión de sus partes. Los conectores que encontramos aquí tienen una particularidad, son similares a los que usan las figuras de acción, pero no se limita a articulaciones su uso. Son conectores listos para impresión 3D, así que si necesitan conectar dos piezas, con éstos conectores no tendrán que romperse la cabeza diseñando uno; éstos ya están probados y listos para ser usados. "
+                </td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 14 "Uniones".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Las 'Uniones' son diferentes tipos de conectores que ofrecen diversas formas de ensamblar piezas. Podemos usar bisagras, rótulas o juntas deslizantes para conectar piezas de manera que puedan moverse o rotar. Las uniones son esenciales en la creación de mecanismos que necesitan flexibilidad y movimiento. En la vida diaria, las uniones las vemos en todo, desde las puertas de los armarios hasta los brazos de un robot.  En TinkerCAD, podemos experimentar con diferentes uniones para ver cómo afectan el movimiento y la estabilidad de nuestras estructuras.  Un ejemplo muy claro son las puertas de los autos, ya que podemos construir una puerta similar en TinkerCad, entendiendo el concepto de la bisagra y su función. Pueden encontrar uniones dentro las múltiples librerías, pero la mayoría de las uniones que están en el apartado de "Hardware" están diseñadas para estructuras. Pueden considerarlo un sistema modular para crear estructuras con palitos de madera, también llamados "dowels". Las uniones que vemos aquí están hechas para palitos de media pulgada de diámetro pero se puede modificar el tamaño para ajustarse a los palitos que tengan ustedes a la mano. Con éste pequeño sistema, pueden solamente imprimir las uniones de ciertas estructuras y usar madera para las piezas largas, ahorrando tiempo y recursos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (1.5 minutos):</strong> Proyectar Diapositiva 15 "Exploración de la Librería STEAMFIE".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, vamos a descubrir la librería 'STEAMFIE', que se encuentra en la pestaña 'Colecciones Destacadas'. STEAMFIE es un proyecto de construcción open source que busca proveer a profesores, estudiantes y a cualquiera, de herramientas para crear proyectos educativos.   Los componentes de STEAMFIE son diseñados específicamente para poderse ensamblar con palos de madera de media pulgada de grosor. Estos componentes incluyen conectores, bases y otros elementos que permiten construir estructuras robustas y versátiles.  En Tinkercad podemos usar estos elementos para crear estructuras de manera virtual y entender como funcionan los componentes. Conocer STEAMFIE nos ayuda a comprender la importancia de crear herramientas educativas accesibles para todos."</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 8 (1.5 minutos):</strong> Proyectar Diapositiva 16 "STEAMFIE: Un Sistema de Construcción Abierto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Una de las características más importantes de STEAMFIE es que es un sistema de construcción abierto. Esto significa que todos pueden usar los diseños de forma gratuita y modificarlos para adaptarlos a sus necesidades.  La filosofía de open source busca promover la colaboración y el intercambio de conocimientos en la educación. Conocer STEAMFIE no sólo nos ayuda a usar una librería, sino también a comprender un modelo de colaboración que promueve el aprendizaje y la innovación para todos."
+                </td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 9 (1.5 minutos):</strong> Proyectar Diapositiva 17 "Ejemplo Práctico: Ensamblaje de un Mecanismo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a ver un ejemplo de cómo podemos usar los elementos de la librería 'Hardware' para construir un pequeño mecanismo.  Imaginemos que queremos construir un pequeño brazo robótico. Podemos empezar usando un engranaje para girar el brazo, un eje para darle soporte, y conectores para unir las piezas.  Al combinar estos elementos, podemos crear un modelo que simule un brazo robótico funcional.  Este ejemplo nos muestra cómo las piezas de hardware trabajan juntas para formar sistemas complejos y funcionales. El diseño y la construcción de mecanismos son esenciales en muchos campos, desde la robótica hasta la ingeniería, y dominando las librerias de TinkerCAD podemos entenderlo y simularlo."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 10 (1.5 minutos):</strong> Proyectar Diapositiva 18 "Tip para Usar Librerías de TinkerCAD".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Es importante tener en cuenta que las librerías no son solo una fuente de modelos, sino también de inspiración. Observen cómo están diseñados los elementos y piensen cómo pueden usarlos de manera creativa en sus propios proyectos. Experimenten con diferentes combinaciones y no tengan miedo de probar cosas nuevas. El proceso de diseño es un proceso iterativo y creativo donde se experimenta, se aprende y se mejora continuamente. La clave es aprender a manipular los componentes de las librerías y combinarlos de manera creativa."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 11 (1 minuto):</strong> Proyectar Diapositiva 19 "El Dato Curioso".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Al explorar la librería de 'Hardware' en TinkerCAD, es interesante notar que muchos de los componentes, como tornillos y engranajes, se basan en estándares de diseño que se han perfeccionado a lo largo de los siglos. Por ejemplo, los engranajes, cuyo origen se remonta a la antigua Grecia, fueron perfeccionados en la Revolución Industrial, pero es interesante saber que incluso Leonardo Da Vinci diseñó mecanismos con engranajes y ejes en el siglo XV, mostrando que la necesidad de crear mecanismos y de transmitir movimientos no es algo moderno, sino algo que ha estado presente a lo largo de la historia. Estos diseños son la base de muchas de las máquinas que usamos hoy en día, desde relojes hasta automóviles, demostrando que los principios básicos de la mecánica siguen siendo relevantes en el diseño y la ingeniería modernos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 12 (1 minuto):</strong> Proyectar Diapositiva 20 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos avanzado en varios objetivos de nuestra misión.  Ahora conocen el uso de las librerías en TinkerCAD, y comprenden la aplicación de los elementos en las librerías de Hardware y Steamfie.  Ahora podemos usar estos conocimientos para crear modelos y mecanismos más complejos. ¡Buen trabajo, Genios!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<!-- -------------------------------------------------Continuación por extensión --------------------------------------------------------- -->
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🚶‍♂️ Actividad 4: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Actividad física para revitalizar y enfocar la atención.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Estiramiento de Estrella".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a hacer una pausa activa. Pónganse de pie y estiren sus brazos y piernas hacia afuera, como una estrella. Mantengan esta posición durante 10 segundos. Esto ayudará a activar sus cuerpos y a despejar sus mentes."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 22 "Cronómetro - 10 segundos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Reflexión sobre el Estiramiento".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Excelente! Este pequeño estiramiento ayuda a activar la circulación y a mantenernos alertas. Ahora estamos listos para continuar con las siguientes actividades con energía y enfoque renovados."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 5: Team Gnius ⏰ Tiempo: 6 minutos</div>
+        <div class="subtitle">Organización en equipos y planificación del reto usando Kanban.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 24 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para esta misión, formen equipos de dos personas. Tómense un minuto para elegir a su compañero o compañera y sentarse juntos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 25 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 26 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus equipos, envíen un representante a recoger sus Magic Tablets, las cuales utilizaremos para el Challenge."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 27 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 28 "Introducción a Kanban Digital".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy usaremos el método Kanban para organizar nuestro trabajo. Accedan a https://scrumboard.org/, una herramienta gratuita que no requiere registro.  Crearemos un tablero para gestionar las tareas de nuestro reto. El Kanban, es un sistema de gestión de flujo de trabajo que nos ayuda a visualizar las tareas y el progreso de un proyecto. Al usar este método podemos dividir tareas complejas en pasos más pequeños y manejables, lo cual nos permite colaborar de manera más eficiente, y no sólo hoy, sino también en futuros proyectos. "</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 29 "Creación del Tablero Kanban".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Una vez en la página, hagan clic en 'Crear un tablero gratis'.  En el tablero, agreguen tres columnas: 'Pendientes', 'En progreso' y 'Hecho'. Luego, identifiquen las tareas necesarias para el Challenge, como diseñar la estructura, usar las conexiones de Hardware y asegurar la estabilidad.  Escriban cada tarea como una tarjeta en la columna 'Pendientes'.  Usar Kanban nos ayuda a planificar y colaborar de forma eficiente, optimizando nuestro tiempo y recursos, y no sólo para el diseño en 3D, sino para muchos otros proyectos de nuestra vida."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 6 -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 6: Challenge ⏰ Tiempo: 14.5 minutos</div>
+        <div class="subtitle">Diseño y construcción de estructuras usando componentes de hardware y uniones.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 30 "Challenge".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, ha llegado el momento de aplicar lo aprendido en el Brain Gym. Hoy vamos a construir estructuras utilizando las librerías de TinkerCAD, y específicamente la librería 'Hardware'. ¡Prepárense para usar sus habilidades creativas y técnicas!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1.5 minutos):</strong> Proyectar Diapositiva 31 "Detalles del Challenge".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Para este Challenge, diseñarán una estructura en TinkerCAD usando las conexiones de la librería 'Hardware', así como cilindros de media pulgada de diámetro que simularán palos de madera. Los niveles de dificultad son: 
+                 <ul>
+                    <li><strong>Rookie:</strong> Construir una estructura básica usando al menos 4 conectores y 4 palos de madera (cilindros). La estructura debe sostenerse por sí misma.</li>
+                    <li><strong>Master:</strong> (+) Construir una estructura con al menos 6 conectores, 6 palos de madera (cilindros) y al menos un engranaje. La estructura debe sostenerse y tener un elemento en movimiento.</li>
+                    <li><strong>Hacker:</strong> (+) Construir una estructura usando al menos 10 conectores, 10 palos de madera (cilindros), 2 engranajes y al menos 2 uniones. La estructura debe sostenerse, tener elementos en movimiento y ser capaz de modificarse usando las uniones.</li>
+                 </ul>
+                 Recuerden que es muy importante priorizar tareas y comenzar con el diseño de la estructura base para poder añadir más elementos con mayor facilidad.  "</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (10 minutos):</strong> Proyectar Diapositiva 32 "Cronómetro - 10 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 33 "Presentación de Estructuras".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, cada equipo tendrá un minuto para mostrar su estructura a sus compañeros. Describan cómo usaron las conexiones de hardware y palos de madera (cilindros) para construir su estructura, qué nivel de dificultad eligieron y cómo superaron los retos del diseño.  Compartir sus experiencias les ayudará a consolidar lo aprendido y a ver diferentes soluciones a los mismos problemas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 5 (1 minuto):</strong> Proyectar Diapositiva 34 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 35 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos completado los objetivos de esta misión. Conocen cómo usar las librerías en TinkerCAD, entienden la aplicación de los elementos en las librerías de Hardware y Steamfie y han diseñado una estructura empleando las conexiones de la librería Hardware. ¡Excelente trabajo, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 36 "You've Got Mon-e".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han demostrado su creatividad y dominio de las herramientas de TinkerCAD. Todos se merecen Mon-e por su esfuerzo y dedicación. ¡Sigamos explorando y creando juntos!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 7 -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter_egg')">
+        <div class="title">🥚 Actividad 7: Easter Egg ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Evaluación rápida de la atención con una pregunta sorpresa.</div>
+    </div>
+    <div id="easter_egg" class="content">
+        <table>
+             <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 37 "Easter Egg - Pregunta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es hora del Easter Egg. La siguiente diapositiva tiene una pregunta sobre un dato interesante que mencioné durante la clase. Los tres primeros en levantar la mano y dar la respuesta correcta ganarán Mon-e. No digan la respuesta en voz alta, solo levanten la mano. ¿Listos?"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 38 "Pregunta del Easter Egg".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¿En qué siglo diseñó Leonardo Da Vinci mecanismos con engranajes y ejes?"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 3 (1 minuto):</strong> Proyectar Diapositiva 39 "Respuesta Correcta".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Uno, ven y dime la respuesta al oído... Ahora tú, dos... Y por último, el tres. La respuesta correcta es: Siglo XV. ¡Felicidades, han ganado Mon-e!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 8 -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 8: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre de la sesión y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 40 "Honor the Dojo".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos terminado por hoy. Ahora, cada equipo pasará al frente para devolver su Magic Tablet. Asegúrense de dejar su área ordenada. Recordemos que cuidar nuestro espacio es parte de ser un buen equipo. ¡Gracias por su esfuerzo y compromiso!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
